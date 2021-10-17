@@ -1,17 +1,29 @@
 <template>
-    <div class="entry-container mb-3 pointer p-2" @click="$router.push({ name:'entry', params: { id: 10 } })">
+    <div class="entry-container mb-3 pointer p-2" @click="$router.push({ name:'entry', params: { id: entry.id } })">
         <!-- Title -->
         <div class="entry-title d-flex">
-            <span class="text-success fs-5 fw-bold">15</span>
-            <span class="mx-1 fs-5">Jul</span>
-            <span class="mx-2 fw-light">2021</span>
+            <span class="text-success fs-5 fw-bold">{{entry.date}}</span>
         </div>
         <div class="entry-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis saepe illo quod illum vero magni quia earum voluptatibus eos, natus porro. Dicta nobis assumenda qui eaque ullam accusamus, quae ea!
+            {{entry.text}}
         </div>
     </div>
 </template>
 
+<script>
+export default {
+    props: {
+        entry: {
+            type: Object
+        }
+    },
+    computed: {
+        shortText(){
+            return (this.entry.text.length > 30) ? this.entry.text.subString(0, 130 ) + "..." : ''
+        },
+    }
+}
+</script>
 <style lang="scss" scoped>
 .entry-container{
     border-bottom: 1px solid #2c3e50;
