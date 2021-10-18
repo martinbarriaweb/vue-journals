@@ -14,7 +14,7 @@
         <div class="d-flex flex-column px-3 h-75">
             <textarea placeholder="Que sucedio hoy" v-model="entry.text"></textarea>
         </div>
-        <Fab :icon="'fa-save'"></Fab>
+        <Fab :icon="'fa-save'" @click="saveEntry"></Fab>
         <img src="https://www.collinsdictionary.com/images/full/island_526092568_1000.jpg" alt="entry" class="img-thumbnail">
     </template>
 </template>
@@ -42,6 +42,9 @@ export default {
             const entry = this.getEntryById(this.id);
             if(!entry) return this.$router.push({ name: 'no-entry' })
             this.entry = entry;
+        },
+        saveEntry(){
+            console.log("adsas");
         }
     },
     created(){
